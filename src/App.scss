@@ -1,3 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #ededed !important;
+}
+
+.bg-body{
+  background-color: #ededed;
+}
+.input-search{
+  width: 25rem;
+  height: 42px;
+  margin-top: 2px;
+  border-radius: 5px;
+  text-indent: 10px;
+
+}
+
+.m-100{
+  height: 100% !important;
+}
+
+.photoUser{
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: none!important;
+  cursor: pointer;
+}
 .App {
   text-align: center;
 }
@@ -32,6 +64,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
