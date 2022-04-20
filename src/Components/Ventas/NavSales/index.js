@@ -1,7 +1,7 @@
 import React from 'react'
 import { BsCalendarCheck, BsList, BsCashCoin } from "react-icons/bs";
-
-const NavSales = ({ filterSalesbyPrice, filterSalesbyDate }) => {
+import Search from '../Search';
+const NavSales = ({ filterSalesbyPrice, filterSalesbyDate, HanddleSearch}) => {
     return (
         <div className='container bg-white'>
                 <div className='row justify-content-center bg-dark py-3'>
@@ -12,10 +12,7 @@ const NavSales = ({ filterSalesbyPrice, filterSalesbyDate }) => {
                     <button className='btn btn-dark text-white border border-white' onClick={filterSalesbyDate}>Filtro Fecha <BsCalendarCheck className='h5 mx-1 mt-1 text-white' /></button>
                     </div>
                     <div className='col-8 col-lg-5 my-lg-1 my-3'>
-                        <div className='input-group'>
-                            <input type="text" className='form-control rounded' placeholder='Buscar' />
-                            <button className="btn btn-outline-light mx-1 rounded" type="button">Button</button>
-                        </div>
+                        <Search HanddleSearch={HanddleSearch}/>
                     </div>
                 </div>
             </div>

@@ -1,10 +1,14 @@
 import React from 'react'
-import {Register} from '../../Register'
+import { useState } from 'react'
+import { Register } from '../../Register'
 
-const Search = () =>{
-
+const Search = ({HanddleSearch}) => {
     return (
-        <div>
+        <div className='input-group'>
+            <input  type="text" 
+                    className='form-control rounded'
+                    onChange={HanddleSearch}
+                    placeholder='Buscar por Nombre del Cliente' />
         </div>
     )
 }
