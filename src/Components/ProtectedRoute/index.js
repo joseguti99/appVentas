@@ -6,7 +6,7 @@ export const ProtectedRoute = ({children}) => {
 
     const {user, loading } = useAuth()
 
-    if(loading) return <Spinner/>
+    if(loading) return <div className="contanier-spinner"><div className="row-spinner"><Spinner/></div></div>
     if(!user) return <Navigate to="/iniciar-sesion"/>
     return <>{children}</>
 

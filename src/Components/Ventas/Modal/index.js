@@ -3,9 +3,9 @@ import { MdAddCircleOutline } from "react-icons/md";
 const Modal = ({sendSell, handleChange}) => {
     return (
         <>
-            <div className='container bg-white'>
+            {/* <div className='container bg-white'> */}
                 <div className='row justify-content-end'>
-                    <button type="button" className="btn btn-warning rounded-pill col-5 col-lg-3 mb-3 mx-3 fs-5" data-bs-toggle="modal" data-bs-target="#CreateSale">
+                    <button type="button" className="btn btn-warning rounded-pill col-5 col-lg-2 mb-3 mx-3 fs-5" data-bs-toggle="modal" data-bs-target="#CreateSale">
                         Crear Venta <MdAddCircleOutline className='text-black fs-4' />
                     </button>
                     <div className='row'>
@@ -50,7 +50,7 @@ const Modal = ({sendSell, handleChange}) => {
                         </div>
                     </div>
                 </div>
-            </div>
+            {/* </div> */}
         </>
     )
 }

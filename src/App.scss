@@ -10,6 +10,7 @@ body {
 .bg-body{
   background-color: #ededed;
 }
+
 .input-search{
   width: 25rem;
   height: 42px;
@@ -20,7 +21,7 @@ body {
 }
 
 .m-100{
-  height: 100vh !important;
+  height: 100% !important;
 }
 
 .photoUser{
@@ -68,4 +69,16 @@ body {
   to {
     transform: rotate(360deg);
   }
+}
+
+.contanier-spinner{
+  position: relative;
+}
+
+.row-spinner{
+  background: #1520;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

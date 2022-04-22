@@ -13,7 +13,6 @@ import Modal from './Modal';
 import { useAuth } from '../../Context/authContext'
 import Spinner from '../Spinner'
 import Search from './Search';
-import uniqueElement from './UniqueElementOfTable';
 
 const TableVentas = () => {
     const [sales, setSales] = useState("")
@@ -23,23 +22,21 @@ const TableVentas = () => {
     const [page, setPage] = useState(1)
     const [itemsperPage, setItemsPerPage] = useState(8)
     const { form, handleChange } = useForm()
-    const [search, setSearch] = useState(false)
+    const [search, setSearch] = useState("")
 
     const { user, logout, loading } = useAuth()
 
     const navigate = useNavigate()
 
     const HanddleSearch = (e) => {
-        //queda permitir la busqueda por ID
-        //transformar los datos en minuscula para que el buscado los encuentre
-        //mostrar la fila de la venta, con sus botones
-        const searcher = e.target.value.toLowerCase()
-        console.log(searcher)
+        const searcher = e.target.value
         setSearch(searcher)
         if(searcher != ""){
             const getSales = sales
-            const results =  getSales.filter(sale => sale.cliente === searcher)
-            SetSalesSearch(...results)
+            const results =  getSales.filter(sale => sale.cliente === searcher.toLowerCase()
+                                                    || sale.total === Number(searcher)
+                                                    || sale.id.slice(0,5).toLowerCase() === searcher.toLowerCase())
+            SetSalesSearch(results)
         }else{
             SetSalesSearch("")
         }
@@ -76,6 +73,7 @@ const TableVentas = () => {
             for (let i = 0; i < summation.length; i++) {
                 sum += summation[i];
             }
+            
             setBalance(sum)
             setDate(getSales.fecha)
         });
@@ -109,9 +107,8 @@ const TableVentas = () => {
         Swal.fire({
             title: '¿Seguro que desea Eliminar?',
             text: "¡No podrás revertir esto!",
-            icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
+            confirmButtonColor: '#3CB371',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Eliminar'
         }).then((result) => {
@@ -123,11 +120,7 @@ const TableVentas = () => {
                     title: 'Anulado con exito'
                 })
                 getData()
-                Swal.fire(
-                    'Eliminado!',
-                    'Su archivo ha sido eliminado.',
-                    'success'
-                )
+                Toast.fire({ icon: 'success', title: 'Su archivo ha sido Eliminado!' })
             }
         })
     }
@@ -173,12 +166,12 @@ const TableVentas = () => {
     }
 
     const maxItems = sales.length / itemsperPage
-
+    
     return (
         <>
             <div className='shadow'>
-                <div className='container rounded bg-white m-100'>
-                    <div className='row pt-4 pb-4 align-items-center justify-content-end'>
+                <div className='container-fluid rounded bg-white m-100'>
+                    <div className='row pb-4 align-items-center justify-content-end'>
                         <div className='col-3'>
                         </div>
                         <div className='col-6'>
@@ -187,47 +180,25 @@ const TableVentas = () => {
                         <div className='col-3 text-end'>
                             {user.reloadUserInfo.photoUrl 
                             ? <>
-                                <img src={user.reloadUserInfo.photoUrl} className="photoUser mx-2" title={`Usuario: ${user.displayName}`} alt="logoUser"/>
+                                <img src={`${user.reloadUserInfo.photoUrl}`} className="photoUser mx-2" title={`Usuario: ${user.displayName}`} alt="logoUser"/>
                                 <button className='btn btn-danger py-2' onClick={handleLogout}>Salir<MdLogout className='h4 my-1 text-white'/></button>
                             </> 
                             :   <>
-                                    <button className='btn btn-danger py-2' onClick={handleLogout}>Salir<MdLogout className='h4 my-1 text-white'/></button>
+                                    <button className='btn btn-danger py-2 my-2' onClick={handleLogout}>Salir<MdLogout className='h4 my-1 text-white'/></button>
                                     <p className='text-primary fs-3'>Usuario Activo: {user.email.slice(0,4).toUpperCase()}</p>
                                 </>
                             } 
                         </div>
                     </div>
                     <Modal sendSell={sendSell} handleChange={handleChange} />
-                    <NavSales filterSalesbyPrice={filterSalesbyPrice} filterSalesbyDate={filterSalesbyDate} HanddleSearch={HanddleSearch}/>
-                    
-                    {salesSearch 
+                    <NavSales filterSalesbyPrice={filterSalesbyPrice} 
+                        filterSalesbyDate={filterSalesbyDate} 
+                        HanddleSearch={HanddleSearch}
+                    />
+                    {sales.length 
                         ? 
-                            <div>
-                                <table className="table table-light">
-                                    <thead>
-                                        <tr>
-                                            <th className='col-2'>ID</th>
-                                            <th className='col-2'>CLIENTE</th>
-                                            <th className='col-2'>FECHA</th>
-                                            <th className='col-2'>TOTAL</th>
-                                            <th className='col-2'>EDITAR</th>
-                                            <th className='col-2'>ANULAR</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th className="col-2">{salesSearch.id.slice(0,5)}</th>
-                                            <td className="col-2">{salesSearch.cliente.toUpperCase()}</td>
-                                            <td className="col-2">{convertTimestamp(salesSearch.fecha.seconds)+" - "+ convertTimestampinHour(salesSearch.fecha.seconds)}</td>
-                                            <td className="col-2">$ {Intl.NumberFormat().format(salesSearch.total)}</td>
-                                            <td className="col-2"><Link to={`/sales/${salesSearch.id}`} className='btn btn-success mx-1'><MdBorderColor className='fs-4' /></Link></td>
-                                            <td className="col-2"><button className='btn btn-danger' onClick={() => deleteSale(salesSearch.id)} ><MdDeleteForever className='fs-4' /></button></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        :   
-                            <Table sales={sales}
+                        <Table sales={sales}
+                            salesSearch={salesSearch}
                             page={page}
                             itemsperPage={itemsperPage}
                             deleteSale={deleteSale}
@@ -237,7 +208,23 @@ const TableVentas = () => {
                             convertTimestamp={convertTimestamp}
                             convertTimestampinHour={convertTimestampinHour}
                         />
+                        :   
+                        <div className='row justify-content-center'>
+                            <div className='col-1 py-3 text-warning'>
+                                <Spinner />
+                            </div>
+                        </div>
                     }
+                    <div className='container-fluid'>
+                        <div className='row rounded justify-content-center'>
+                            <div className='col-6'>
+                                <p className='fs-4 text-center bg-warning rounded shadow-lg py-2 mt-3'>TRANSACCIONES <br/> {sales.length}</p>
+                            </div>
+                            <div className='col-6'>
+                                <p className='fs-4 text-center bg-warning rounded shadow-lg py-2 mt-3'>BALANCE <br/> ${new Intl.NumberFormat().format(balance)}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </>

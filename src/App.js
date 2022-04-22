@@ -1,7 +1,6 @@
 import './App.scss';
 import "../node_modules/bootstrap/dist/css/bootstrap.css"
-import "../node_modules/bootstrap/js/dist/modal"
-import "../node_modules/bootstrap/js/dist/dropdown"
+// import "../node_modules/bootstrap/js/dist/modal"
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle"
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './Components/Home/Index';
