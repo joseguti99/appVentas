@@ -169,22 +169,22 @@ const TableVentas = () => {
     
     return (
         <>
-            <div className='shadow'>
-                <div className='container-fluid rounded bg-white m-100'>
+            <div className='shadow m-100'>
+                <div className='container-fluid rounded bg-white'>
                     <div className='row pb-4 align-items-center justify-content-end'>
-                        <div className='col-3'>
+                        <div className='col-12 col-xg-3'>
                         </div>
-                        <div className='col-6'>
-                            <h1 className='margin-center'>REGISTRO DE VENTAS</h1>
+                        <div className='col-12 col-lg-6'>
+                            <h1 className='margin-center title-sells'>REGISTRO DE VENTAS</h1>
                         </div>
-                        <div className='col-3 text-end'>
+                        <div className='col-12 col-lg-3 text-end'>
                             {user.reloadUserInfo.photoUrl 
                             ? <>
                                 <img src={`${user.reloadUserInfo.photoUrl}`} className="photoUser mx-2" title={`Usuario: ${user.displayName}`} alt="logoUser"/>
                                 <button className='btn btn-danger py-2' onClick={handleLogout}>Salir<MdLogout className='h4 my-1 text-white'/></button>
                             </> 
                             :   <>
-                                    <button className='btn btn-danger py-2 my-2' onClick={handleLogout}>Salir<MdLogout className='h4 my-1 text-white'/></button>
+                                    <button className='btn btn-danger py-2' onClick={handleLogout}>Salir<MdLogout className='h4 my-1 text-white'/></button>
                                     <p className='text-primary fs-3'>Usuario Activo: {user.email.slice(0,4).toUpperCase()}</p>
                                 </>
                             } 
@@ -218,10 +218,10 @@ const TableVentas = () => {
                     <div className='container-fluid'>
                         <div className='row rounded justify-content-center'>
                             <div className='col-6'>
-                                <p className='fs-4 text-center bg-warning rounded shadow-lg py-2 mt-3'>TRANSACCIONES <br/> {sales.length}</p>
+                                <p className='transactions text-center bg-warning rounded shadow py-2 mt-3'>TRANSACCIONES <br/> {sales.length}</p>
                             </div>
                             <div className='col-6'>
-                                <p className='fs-4 text-center bg-warning rounded shadow-lg py-2 mt-3'>BALANCE <br/> ${new Intl.NumberFormat().format(balance)}</p>
+                                <p className='transactions text-center bg-warning rounded shadow py-2 mt-3'>BALANCE <br/> ${new Intl.NumberFormat().format(balance)}</p>
                             </div>
                         </div>
                     </div>

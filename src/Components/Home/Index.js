@@ -14,9 +14,9 @@ const Home = () => {
             </div>
             <div className='row justify-content-center'>
                 <Link to="/iniciar-sesion">
-                    <div className='col-5 btn btn-warning rounded shadow my-4'>
+                    <div className='col-12 col-lg-5 btn btn-warning rounded shadow my-4'>
 
-                        <h3 className='display-6'>COMENZAR AHORA</h3>
+                        <h3 className='transactions'>COMENZAR AHORA</h3>
                     </div>
                 </Link>
             </div>

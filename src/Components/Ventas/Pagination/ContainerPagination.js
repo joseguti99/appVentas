@@ -37,24 +37,24 @@ const ContainerPagination = ({ page, setPage, maxItems }) => {
     return (
         <div className='container pb-2'>
             <div className='row justify-content-center mb-2'>
-                <div className='col-1'>
+                <div className='col-2 col-lg-1'>
                     <button 
                         disabled={page === 1 || page < 1} onClick={previousPage} 
                         className="btn btn-dark">
                         <BsCaretLeftFill className='text-white '/>
                     </button>
                 </div>
-                <div className='col-1 justify-content-center'>
+                <div className='col-2 col-lg-1justify-content-center'>
                     <input
                         onChange={e => onChange(e)}
                         onKeyDown={e => onKeyDown(e)}
-                        className="form-control text-center"
+                        className="form-control text-center fs-th"
                         name="page"
                         autoComplete="off"
                         value={input}
                     />
                 </div>
-                <div className='col-1'>
+                <div className='col-2 col-lg-1'>
                     <button
                         disabled={page === Math.ceil(maxItems) || page > Math.ceil(maxItems)}
                         className="btn btn-dark"

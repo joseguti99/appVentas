@@ -43,12 +43,12 @@ export const Login = () => {
 
     return (
         <div className="container bg-white">
-            <form className="row justify-content-center my-5 py-3 rounded shadow border" onSubmit={handleSubmit}>
+            <form className="row justify-content-center my-5 py-3" onSubmit={handleSubmit}>
             <div className='col-12 text-end'>
                         <button className='btn btn-danger' onClick={returnHome}>X</button>
                     </div>
                 <h1>INICIAR SESION</h1>
-                <div className="col-5 mx-5">
+                <div className="col-12 col-lg-5 mx-5">
                     <input
                         type="email"
                         name="email"
@@ -58,7 +58,7 @@ export const Login = () => {
                         required />
                 </div>
                 <div className="col-12"></div>
-                <div className="col-5 mx-5">
+                <div className="col-12 col-lg-5 mx-5">
                     <input
                         type="password"
                         name="password"
@@ -67,8 +67,8 @@ export const Login = () => {
                         id="password"
                         className="form-control my-3 py-3"
                         required />
-                    <button className="btn btn-primary rounded-pill col-10 shadow-lg my-3 py-3">Iniciar Sesion</button>
-                    <button className="btn rounded-pill col-10 shadow-lg  my-3 py-1 border" 
+                    <button className="btn btn-primary rounded-pill col-10 shadow my-3 py-3">Iniciar Sesion</button>
+                    <button className="btn rounded-pill col-10 shadow my-3 py-1 border" 
                             onClick={handleGoogleSignIn}><FcGoogle className="h1" />
                     </button>
                     <div className="col-12 text-center">

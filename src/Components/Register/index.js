@@ -41,12 +41,12 @@ export const Register = () => {
     console.log(error)
     return (
         <div className="container bg-white">
-            <form className="row justify-content-center my-5 py-3 rounded shadow border" onSubmit={handleSubmit}>
+            <form className="row justify-content-center my-5 py-3" onSubmit={handleSubmit}>
                 <div className='col-12 text-end'>
                     <button className='btn btn-danger' onClick={returnLogin}>X</button>
                 </div>
                 <h1>REGISTRO</h1>
-                <div className="col-5 mx-5">
+                <div className="col-12 col-lg-5 mx-5">
                     <input
                         type="email"
                         name="email"
@@ -56,7 +56,7 @@ export const Register = () => {
                         required />
                 </div>
                 <div className="col-12"></div>
-                <div className="col-5 mx-5">
+                <div className="col-12 col-lg-5 mx-5">
                     <input
                         type="password"
                         name="password"
