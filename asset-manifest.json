@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/appVentas/static/css/main.5a44b57a.css",
-    "main.js": "/appVentas/static/js/main.572e05b9.js",
+    "main.css": "/appVentas/static/css/main.02ba785b.css",
+    "main.js": "/appVentas/static/js/main.5c06b7d1.js",
     "static/js/787.4388a7d2.chunk.js": "/appVentas/static/js/787.4388a7d2.chunk.js",
     "index.html": "/appVentas/index.html",
-    "main.5a44b57a.css.map": "/appVentas/static/css/main.5a44b57a.css.map",
-    "main.572e05b9.js.map": "/appVentas/static/js/main.572e05b9.js.map",
+    "main.02ba785b.css.map": "/appVentas/static/css/main.02ba785b.css.map",
+    "main.5c06b7d1.js.map": "/appVentas/static/js/main.5c06b7d1.js.map",
     "787.4388a7d2.chunk.js.map": "/appVentas/static/js/787.4388a7d2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5a44b57a.css",
-    "static/js/main.572e05b9.js"
+    "static/css/main.02ba785b.css",
+    "static/js/main.5c06b7d1.js"
   ]
 }
